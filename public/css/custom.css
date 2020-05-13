@@ -1,0 +1,96 @@
+body {
+    background-color: rgba(0, 0, 0, 0.89);
+    color: rgb(245, 242, 233);
+}
+
+.card-body {
+    background-color: rgba(0, 0, 0, 0.829);
+}
+
+.card-header {
+    background-color: black;
+}
+
+a {
+    color: rgb(204, 91, 91);
+}
+
+a:hover {
+    color: rgb(224, 218, 121);
+}
+
+.button-abs {
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 0.5rem;
+    color: rgb(240, 238, 229);
+    font-family: 'Acme', sans-serif;
+    font-size: 1.75rem;
+    height: 9rem;
+    width: 16rem;
+  }
+
+  .button-abs:hover {
+    color: rgb(248, 74, 74);
+  }
+
+  .booking-btn {
+    float: right;
+  }
+
+  .card-menu {
+    color: rgb(223, 223, 223);
+    font-size: 1.25rem;
+    background: rgba(201, 188, 188, 0.274);
+  }
+
+  .card-menu:hover {
+    color: rgb(143, 143, 143);
+    font-size: 1.25rem;
+    cursor: default;
+  }
+
+  .sub-card-menu {
+    color: rgb(21, 201, 156);
+    font-size: 1.25rem;
+  }
+
+  .sub-card-menu:hover {
+    color: rgb(233, 120, 120);
+    font-size: 1.25rem;
+  }
+
+  .card-link {
+    color: rgb(233, 120, 120);
+  }
+
+  select#ticket {
+      height: 2rem;
+      width: 6rem;
+      background: rgb(21, 201, 156);
+      color: whitesmoke;
+      border-radius: 3px;
+      border: 1px solid rgb(185, 185, 185);
+      justify-content: center;
+      font-size: 1.3rem;
+  }
+
+  button#search {
+      background: url('/fonts/search-solid.svg');
+      background-size: inherit;
+      position: absolute;
+      height: 15px;
+      width: 15px;
+      margin-left: 10px;
+      border: none;
+  }
+
+  input#search {
+      padding-left: 30px;
+      height: 75%;
+      width: 90%;
+      position: center;
+  }
+

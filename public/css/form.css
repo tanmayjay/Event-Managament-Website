@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+  }
+
+  #reg-form {
+    background-color: #ffffff;
+    margin: auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h4 {
+      color: #ffffff;
+      font-weight: bold;
+      background: #bbbbbb;
+      padding: 10px;
+      border-radius: 4px;
+  }
+
+  input {
+    padding: 6px;
+    width: 100%;
+    font-size: 12px;
+    font-family: Raleway;
+    border: 1px solid #15cdee;
+    border-radius: 5px;
+
+  }
+
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+
+  .form-button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+
+  .form-button:hover {
+    opacity: 0.8;
+  }
+
+  #back-button {
+    background-color: #bbbbbb;
+  }
+
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+
+  .step.active {
+    opacity: 1;
+  }
+
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }
+
+  input#image {
+    width: 100%;
+    height: 4rem;
+    border: 1px dashed tomato;
+    color: rgb(224, 101, 64);
+}
