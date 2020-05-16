@@ -14,40 +14,48 @@ class EventsController extends Controller
     }
 
     public function create(){
-        return view('events.create');
+        if(auth()->check()){
+            if(auth()->user()['usertype']=='Admin'){
+                return view('events.create');
+            }
+        }
+        return abort(404, 'Not Found');
     }
 
     public function store(){
-        if(auth()->user()['usertype'] == "Admin"){
-            $data = request()->validate([
-                'title' => ['required', 'string', 'max:255'],
-                'location' => 'required',
-                'type' => ['required', 'string', 'max:255'],
-                'organizer' => ['required', 'string', 'max:255'],
-                'performer' => ['required', 'string', 'max:255'],
-                'capacity' => ['required', 'numeric'],
-                'ticket_price' => '',
-                'start_date' => ['required', 'string', 'max:255'],
-                'end_date' => ['required', 'string', 'max:255'],
-                'description' => '',
-                'email' => '',
-                'phone' => '',
-                'website' => '',
-                'cover_image' => ['','image'],
-                'another' => '',
-            ]);
+        if(auth()->check()){
+            if(auth()->user()['usertype'] == "Admin"){
+                $data = request()->validate([
+                    'title' => ['required', 'string', 'max:255'],
+                    'location' => 'required',
+                    'type' => ['required', 'string', 'max:255'],
+                    'organizer' => ['required', 'string', 'max:255'],
+                    'performer' => ['required', 'string', 'max:255'],
+                    'capacity' => ['required', 'numeric'],
+                    'ticket_price' => '',
+                    'start_date' => ['required', 'string', 'max:255'],
+                    'end_date' => ['required', 'string', 'max:255'],
+                    'description' => '',
+                    'email' => '',
+                    'phone' => '',
+                    'website' => '',
+                    'cover_image' => ['','image'],
+                    'another' => '',
+                ]);
 
-            if(!empty(request('cover_image'))){
-                $imagePath = request('cover_image')->store('uploads', 'public');
-                $data['cover_image'] = $imagePath;
+                if(!empty(request('cover_image'))){
+                    $imagePath = request('cover_image')->store('uploads', 'public');
+                    $data['cover_image'] = $imagePath;
+                }
+
+                $data['location'] = json_encode(request('location'));
+
+                auth()->user()->creates()->create($data);
+                return redirect('/event');
             }
-
-            $data['location'] = json_encode(request('location'));
-
-            auth()->user()->creates()->create($data);
-            return redirect('/event');
         }
 
+        return abort(404, 'Not Found');
     }
 
     public function filter($type){
@@ -73,11 +81,14 @@ class EventsController extends Controller
     }
 
     public function destroy(Event $event){
-        if(auth()->user()['usertype'] == "Admin"){
-            DB::table('events')->where('id',$event->id)->delete();
-            //Event::destroy($event);
+        if(auth()->check()){
+            if(auth()->user()['usertype'] == "Admin"){
+                DB::table('events')->where('id',$event->id)->delete();
+                //Event::destroy($event);
+                return redirect('/event/type/all');
+            }
         }
-        return redirect('/event/type/all');
+        return abort(404, 'Not Found');
     }
 
     public function edit(Event $event){
@@ -87,12 +98,9 @@ class EventsController extends Controller
                 $place = json_decode($event->location);
 
                 return view('events.edit',compact('event','place'));
-            }else {
-                return abort(404, 'Not Found');
             }
-        }else {
-            return abort(404, 'Not Found');
         }
+        return abort(404, 'Not Found');
     }
 
     public function update(Event $event){
@@ -116,12 +124,9 @@ class EventsController extends Controller
 
                 $event->update($data);
                 return redirect('/event/'.$event->id);
-            }else {
-                return abort(404, 'Not Found');
             }
-        }else {
-            return abort(404, 'Not Found');
         }
+        return abort(404, 'Not Found');
     }
 
     public function show(Event $event){

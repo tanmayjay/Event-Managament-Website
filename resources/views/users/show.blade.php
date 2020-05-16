@@ -25,10 +25,10 @@
 
                     @if ((auth()->user()->id == $user->id))
                     <div class="pt-1 pb-4">
-                        <button class="btn btn-light btn-sm btn-block" onclick="location.href='/user/{{$user->username}}/edit/{{'photo'}}'">Change Photo</button>
+                        <button class="btn btn-outline-secondary btn-sm btn-block" onclick="location.href='/user/{{$user->username}}/edit/{{'photo'}}'">Change Photo</button>
                     </div>
                     <div class="container p-2">
-                        <div class="pb-3"><button onClick="location.href='/user/{{$user->username}}/edit/password'" class="btn btn-secondary btn-sm">Change Password</button></div>
+                        <div class="pb-3"><button onClick="location.href='/user/{{$user->username}}/edit/password'" class="btn btn-dark btn-sm">Change Password</button></div>
                         <div class="pb-3">
                             <button id="delete" class="btn btn-danger btn-sm" onclick="confirmDelete()">Delete Account</button>
 

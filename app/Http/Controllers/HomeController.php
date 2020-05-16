@@ -49,17 +49,14 @@ class HomeController extends Controller
 
         $eventsInCountry = Event::query()->where('location','like',"%{$userAddr[2]}%")->whereNotIn('id',$bookedEvents);
         $eventsInCity = Event::query()->where('location','like',"%{$userAddr[1]}%")->whereNotIn('id',$bookedEvents);
-        $eventsInArea = Event::query()->where('location','like',"%{$userAddr[0]}%")->whereNotIn('id',$bookedEvents);
-        $eventsInZip = Event::query()->where('location','like',"%{$userAddr[3]}%")->whereNotIn('id',$bookedEvents);
 
-        $eventsNear = $eventsInArea
-                        ->union($eventsInZip)
-                        ->union($eventsInCity)
+        $eventsNear = $eventsInCity
                         ->union($eventsInCountry)
                             ->inRandomOrder()
                                 ->limit(9)
                                     ->get();
 
+        $eventsNearBy = [];
         foreach($eventsNear as $eNear){
             $eventsNearBy[] = $eNear->id;
         }

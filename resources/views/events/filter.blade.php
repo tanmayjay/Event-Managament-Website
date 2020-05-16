@@ -20,11 +20,11 @@
                     </div>
                     <div class="card-body"
                     style="background:url('{{(empty($event->cover_image))? '/image/events.jpg':'/storage/'.$event->cover_image}}'); background-size:cover; width:345px; height:200px;">
-                     <div class="container">
-                        <p class="card-menu">{{$event->performer}}</p>
-                         <p class="card-menu pt-2">{{date('d-M-Y',  strtotime($event->start_date))}}</p>
-                         <p class="card-menu">@if($l = json_decode($event->location)){{$l[1]." ".$l[2]}}@endif</p>
-                         <p class="card-menu">#{{$event->type}}</p>
+                        <div class="container">
+                            <p class="card-menu">{{$event->performer}}</p>
+                            <p class="card-menu pt-2">{{date('d-M-Y',  strtotime($event->start_date))}}</p>
+                            <p class="card-menu">@if($l = json_decode($event->location)){{$l[1]." ".$l[2]}}@endif</p>
+                            <p class="card-menu">#{{$event->type}}</p>
                         </div>
                     </div>
 

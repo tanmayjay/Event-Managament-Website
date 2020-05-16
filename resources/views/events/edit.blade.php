@@ -57,6 +57,15 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                                <input id="location[]" type="text" class="form-control @error('location[]') is-invalid @enderror"
+                                name="location[]" value="{{ $place[3] }}" autocomplete="location[]" autofocus required placeholder="Zip Code">
+
+                                @error('location[]')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
